@@ -44,7 +44,6 @@ const Navbar = () => {
           whileHover={{ scale: 1.12, backgroundColor: 'var(--dark-blue)', transition: { type: 'spring', damping: 20, stiffness: 300 } }}
           className={style.logo_btn}
         >
-          <img src={logo} alt="My logo" className={style.logo} loading="lazy" />
         </motion.button>
 
         {/* desktop navlink */}

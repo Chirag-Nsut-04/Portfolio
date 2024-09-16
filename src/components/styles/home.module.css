@@ -43,9 +43,11 @@
   overflow: hidden;
   padding: 10px 13px;
   transition: 0.2s;
-  /* border-radius: 4px; */
   color: var(--white);
   border: 2px solid var(--grey);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn_hover,
@@ -95,6 +97,53 @@
   transform: rotate(90deg);
 }
 
+.profile_pic_container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.profile_pic {
+  width: 120px; /* Adjusted size */
+  height: 120px; /* Adjusted size */
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7); /* Shiny glittery effect */
+  border: 3px solid var(--cyan); /* Optional: adds a border for better visibility */
+}
+
+/* Modal Styles */
+.modal_content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.close_button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--cyan);
+  color: var(--white);
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  z-index: 1001; /* Make sure it’s above all */
+}
+
+.close_button:hover {
+  background: var(--dark-blue);
+}
+
+.modal_content iframe {
+  width: 100%;
+  height: calc(100% - 40px); /* Adjust height to account for button */
+}
+
+/* Responsive Styles */
 @media screen and (min-width: 480px) {
   .container {
     align-items: center;
@@ -127,6 +176,20 @@
     margin-left: 6px;
     font-size: 16px;
   }
+
+  .profile_pic {
+    width: 100px; /* Adjusted size */
+    height: 100px; /* Adjusted size */
+  }
+
+  /* Ensure profile picture remains centered on smaller screens */
+  .profile_pic_container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center vertically */
+    width: 100%;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -149,6 +212,11 @@
 
   .arrow {
     font-size: 18px;
+  }
+
+  .profile_pic {
+    width: 120px; /* Adjusted size */
+    height: 120px; /* Adjusted size */
   }
 }
 
@@ -179,19 +247,11 @@
   }
 
   .arrow {
-    margin-left: 8px;
-    font-size: 1.4rem;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .intro {
-    font-size: 2.1rem;
-    letter-spacing: 0.2rem;
-    line-height: 2.4rem;
+    font-size: 20px;
   }
 
-  .name {
-    font-size: 2.1rem;
+  .profile_pic {
+    width: 150px; /* Adjusted size */
+    height: 150px; /* Adjusted size */
   }
 }

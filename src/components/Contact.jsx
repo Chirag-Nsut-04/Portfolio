@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import SectionWrapper from '../hoc';
 import { fadeIn, textVariant, slideIn } from '../utils/motion';
-import contact from '../assets/contact.svg';
+import contact from '../assets/p2.gif';
 import style from './styles/contact.module.css';
 
 const Contact = () => {
@@ -24,17 +24,20 @@ const Contact = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const form = event.target;
-    const isValid = form.checkValidity();
-    if (isValid) {
-      // Submit the form
-      form.submit();
-      setForm({
-        name: '',
-        email: '',
-        message: '',
-      });
-    }
+    const { name, email, message } = form;
+
+    // Construct mailto link
+    const mailtoLink = `mailto:chiragnsut04@gmail.com?subject=Contact%20Form%20Submission&body=Name:%20${encodeURIComponent(name)}%0AEmail:%20${encodeURIComponent(email)}%0AMessage:%20${encodeURIComponent(message)}`;
+
+    // Open email client
+    window.location.href = mailtoLink;
+
+    // Clear form fields
+    setForm({
+      name: '',
+      email: '',
+      message: '',
+    });
   };
 
   return (
@@ -43,14 +46,12 @@ const Contact = () => {
         Get in Touch!
       </motion.h1>
       <motion.p variants={fadeIn('', '', 0.15, 1)} className={style.subtitle}>
-        I&apos;m always excited to hear about new opportunities and collaborations. Don&apos;t hesitate to reach out and let&apos;s make something great.
+      I’m thrilled to explore new opportunities and collaborations. Feel free to reach out—let’s create something amazing together
       </motion.p>
       <div className={style.container}>
         <motion.form
           variants={slideIn('left', '', 0, 1)}
           onSubmit={handleSubmit}
-          action="https://formspree.io/f/mgeqgkdd"
-          method="post"
           className={style.form_container}
         >
           <div className={style.form}>

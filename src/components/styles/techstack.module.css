@@ -42,9 +42,11 @@
   width: 85px;
   height: 90px;
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  background-color: #fff;
+  background-color: #fff; /* Set background color to white */
   position: relative;
-  transition: background-color 0.3s ease-out;
+  transition: transform 0.4s ease, box-shadow 0.4s ease; /* Smooth transition */
+  overflow: hidden; /* Ensures the pseudo-element stays within the tech container */
+  animation: none; /* No initial animation */
 }
 
 .tech_img {
@@ -56,6 +58,49 @@
   transform: translate(-50%, -50%);
   object-fit: cover;
   object-position: center;
+  transition: filter 0.4s ease; /* Smooth transition for the filter */
+}
+
+.tech:hover {
+  cursor: pointer;
+  background-color: #fff; /* Keep background white */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Add shadow to create depth */
+  transform: scale(1.1); /* Slightly scale up */
+  animation: pop 0.6s ease forwards; /* Apply pop animation */
+}
+
+.tech:hover .tech_img {
+  filter: none; /* Show the image in full color on hover */
+}
+
+.tech:before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 60%);
+  transition: opacity 0.4s ease;
+  opacity: 0;
+  pointer-events: none; /* Ensure the pseudo-element does not interfere with clicks */
+}
+
+.tech:hover:before {
+  opacity: 1; /* Show the pseudo-element on hover */
+}
+
+/* Keyframes for pop animation */
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1.1);
+  }
 }
 
 @media screen and (min-width: 480px) {
@@ -107,22 +152,19 @@
   .tech {
     width: 80px;
     height: 83px;
-    background-color: var(--cyan);
   }
 
   .tech:hover {
-    cursor: pointer;
-    background-color: var(--navy);
+    background-color: #fff; /* Keep background white */
   }
 
   .tech_img {
-    mix-blend-mode: multiply;
-    filter: grayscale(100%) contrast(1);
+    mix-blend-mode: normal; /* No blending */
+    filter: none; /* No grayscale or contrast */
   }
 
   .tech:hover .tech_img {
-    mix-blend-mode: normal;
-    filter: none;
+    filter: none; /* No filter on hover */
   }
 }
 
